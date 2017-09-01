@@ -68,22 +68,28 @@ public class PhoneNumber {
     private boolean isTollFree() {
         String isTollFreeTest = String.valueOf(this._area); // convert to string
         // for test if toll free
-        return isTollFreeTest.contains("800") || isTollFreeTest.contains("866")
+        return isTollFreeTest.contains("800") || isTollFreeTest.contains("866") // return true if any are toll free
                 || isTollFreeTest.contains("877") ||
                 isTollFreeTest.contains("880") || isTollFreeTest.contains("881")
                 || isTollFreeTest.contains("882") ||
                 isTollFreeTest.contains("888");
     }
 
+    /**
+     * Helper method to determine if phone number contains only digits
+     * @param phoneNumber
+     * @return true if phone number is only digits
+     */
     private boolean containsOnlyDigits(String phoneNumber) {
+        boolean containsOnlyDigits = true;
         String phoneNumberOnly =
                 phoneNumber.replaceAll("[\\s\\-()]", "");
         for (int i = 0; i < phoneNumberOnly.length(); i++) {
             if(!Character.isDigit(phoneNumberOnly.charAt(i))) {
-                return false;
+                containsOnlyDigits = false;
             }
         }
-        return true;
+        return containsOnlyDigits;
     }
 
     private String LettersToNumbers(String phoneNumberToConvert) {
@@ -157,6 +163,7 @@ public class PhoneNumber {
         System.out.println(f.isTollFree());
         System.out.println(g);
         System.out.println(h);
+        System.out.println(h.containsOnlyDigits("503-GET-COLD"));
     }
 
 }
