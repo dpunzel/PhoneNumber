@@ -39,15 +39,17 @@ public class PhoneNumber {
      * @param phoneNumber
      */
     private PhoneNumber(String phoneNumber) {
+        // check whether the phone contains letters
         if(!containsOnlyDigits(phoneNumber)) {
-            String phoneNumberConverted = LettersToNumbers(phoneNumber);
+            String phoneNumberConverted = LettersToNumbers(phoneNumber); // convert letters to numbers
+            // After letters have been converted, assign to valid variable
             _area = Integer.parseInt(String.valueOf(phoneNumberConverted.
                     substring(0, 3)));
             _exchange = Integer.parseInt(String.valueOf(phoneNumberConverted.
                     substring(4, 7)));
             _extension = Integer.parseInt(String.valueOf(phoneNumberConverted.
                     substring(8,12)));
-        } else {
+        } else { // Else statement if phone number does not contain letters
             _area = Integer.parseInt(String.valueOf(phoneNumber.
                     substring(0, 3)));
             _exchange = Integer.parseInt(String.valueOf(phoneNumber.
