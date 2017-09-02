@@ -115,49 +115,49 @@ public class PhoneNumber {
      * @return A string representing phone number without letters
      */
     private String LettersToNumbers(String phoneNumberToConvert) {
-        char[] data = phoneNumberToConvert.toCharArray();
+        char[] phoneNumberConverted = phoneNumberToConvert.toCharArray();
         // loop through the phone number to decode from letters to numbers
-        for (int i=0; i<data.length; ++i) {
-            char phoneCharacter = data[i];
+        for (int i=0; i<phoneNumberConverted.length; ++i) {
+            char phoneCharacter = phoneNumberConverted[i];
             phoneCharacter = Character.toLowerCase(phoneCharacter);
             // store each index value as number once looped over.
             switch (phoneCharacter) {
                 case 'a':
                 case 'b':
-                case 'c':   data[i] = '2';
+                case 'c':   phoneNumberConverted[i] = '2';
                     break;
                 case 'd':
                 case 'e':
-                case 'f':   data[i] = '3';
+                case 'f':   phoneNumberConverted[i] = '3';
                     break;
                 case 'g':
                 case 'h':
-                case 'i':   data[i] = '4';
+                case 'i':   phoneNumberConverted[i] = '4';
                     break;
                 case 'j':
                 case 'k':
-                case 'l':   data[i] = '5';
+                case 'l':   phoneNumberConverted[i] = '5';
                     break;
                 case 'm':
                 case 'n':
-                case 'o':   data[i] = '6';
+                case 'o':   phoneNumberConverted[i] = '6';
                     break;
                 case 'p':
                 case 'q':
                 case 'r':
-                case 's':   data[i] = '7';
+                case 's':   phoneNumberConverted[i] = '7';
                     break;
                 case 't':
                 case 'u':
-                case 'v':   data[i] = '8';
+                case 'v':   phoneNumberConverted[i] = '8';
                     break;
                 case 'w':
                 case 'x':
                 case 'y':
-                case 'z':   data[i] = '9';
+                case 'z':   phoneNumberConverted[i] = '9';
             }
         }
-        return String.valueOf(data);
+        return String.valueOf(phoneNumberConverted);
     } // Method to convert letters to numbers and return value
 
     /**
