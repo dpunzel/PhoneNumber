@@ -36,7 +36,8 @@ public class PhoneNumber {
 
     /**
      * Constructor with phone number input as a string.
-     * @param phoneNumber
+     * @param phoneNumber the string value of a phone number with possible
+     *                    letters and numbers combinations
      */
     private PhoneNumber(String phoneNumber) {
         getPhoneNumberStringValue(phoneNumber);
@@ -72,12 +73,12 @@ public class PhoneNumber {
             _extension = Integer.parseInt(String.valueOf(phoneNumber.
                     substring(8, 12)));
         }
-    }
+    } // getPhoneNumberStringValue method
 
     /**
      * Method to determine if phone number is Toll free based on any
      * of these combinations 800, 866, 877, 880, 881, 882, and 888
-     * @return
+     * @return true if is toll free matches set of toll free numbers
      */
     private boolean isTollFree() {
         String isTollFreeTest = String.valueOf(this._area); // convert to string
@@ -88,11 +89,11 @@ public class PhoneNumber {
                 || isTollFreeTest.contains("882") ||
                 isTollFreeTest.contains("888");
         // return true if any are toll free
-    }
+    } // isTollFree method
 
     /**
      * Helper method to determine if phone number contains only digits
-     * @param phoneNumber
+     * @param phoneNumber the phone number to check
      * @return true if phone number is only digits
      */
     private boolean containsOnlyDigits(String phoneNumber) {
@@ -105,13 +106,13 @@ public class PhoneNumber {
             }
         }
         return containsOnlyDigits;
-    }
+    } // containsOnlyDigits method
 
     /**
      * Method to convert string formatted phone number with letters to all
      * numbers.
      * @param phoneNumberToConvert phone number with letters
-     * @return
+     * @return A string representing phone number without letters
      */
     private String LettersToNumbers(String phoneNumberToConvert) {
         char[] data = phoneNumberToConvert.toCharArray();
@@ -166,27 +167,4 @@ public class PhoneNumber {
     public String toString() {
         return String.format("(%03d) %03d-%04d", _area, _exchange, _extension);
     }
-
-    public static void main(String[] args) {
-        PhoneNumber a = new PhoneNumber(609, 258, 4455);
-        PhoneNumber b = new PhoneNumber(609, 876, 5309);
-        PhoneNumber c = new PhoneNumber(609, 203, 5309);
-        PhoneNumber d = new PhoneNumber(215, 076, 5309);
-        PhoneNumber e = new PhoneNumber(876, 5309);
-        PhoneNumber f = new PhoneNumber("888-897-1234");
-        PhoneNumber g = new PhoneNumber("255-get-loot");
-        PhoneNumber h = new PhoneNumber("971-SOn-Beam");
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
-        System.out.println(d);
-        System.out.println(e);
-        System.out.println(e.isTollFree());
-        System.out.println(f);
-        System.out.println(f.isTollFree());
-        System.out.println(g);
-        System.out.println(h);
-        //System.out.println(h.containsOnlyDigits("503-GET-COLD"));
-    }
-
 }
