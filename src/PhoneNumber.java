@@ -6,11 +6,11 @@
  * @version 1.0
  */
 public class PhoneNumber {
-    // variables
+    // variables used in Phone number
     private int _area;
     private int _exchange;
     private int _extension;
-    private static final int LOCAL_AREA_CODE = 503;
+    private static final int LOCAL_AREA_CODE = 503; // Constant known areaCode
 
     /**
      * Constructor with inputs of area code, exchange, and extension
@@ -39,25 +39,39 @@ public class PhoneNumber {
      * @param phoneNumber
      */
     private PhoneNumber(String phoneNumber) {
-        // check whether the phone contains letters
+        getPhoneNumberStringValue(phoneNumber);
+        /*
+        call method to decode
+        string value of phone number if necessary and assign each phone
+        number variable(_area, _exchange, _extension)
+        */
+    } // PhoneNumber constructor with String parameter
+
+    /**
+     * Method used by constructor with Sting parameter to check and convert
+     * if necessary the area code, exchange, and extension to a usable
+     * value.
+     * @param phoneNumber the number passed in from the constructor
+     */
+    private void getPhoneNumberStringValue(String phoneNumber) {
         if(!containsOnlyDigits(phoneNumber)) {
-            String phoneNumberConverted = LettersToNumbers(phoneNumber); // convert letters to numbers
-            // After letters have been converted, assign to valid variable
-            _area = Integer.parseInt(String.valueOf(phoneNumberConverted.
-                    substring(0, 3)));
+            String phoneNumberConverted = LettersToNumbers(phoneNumber);
+            // convert letters to numbers then assign each variable that
+            // the phone number uses (_area, _exchange, _extension)
+            _area = Integer.parseInt((String.valueOf(phoneNumberConverted.
+                    substring(0, 3))));
             _exchange = Integer.parseInt(String.valueOf(phoneNumberConverted.
                     substring(4, 7)));
             _extension = Integer.parseInt(String.valueOf(phoneNumberConverted.
-                    substring(8,12)));
-        } else { // Else statement if phone number does not contain letters
-            _area = Integer.parseInt(String.valueOf(phoneNumber.
-                    substring(0, 3)));
+                    substring(8, 12)));
+        } else {
+            _area = Integer.parseInt((String.valueOf(phoneNumber.
+                    substring(0, 3))));
             _exchange = Integer.parseInt(String.valueOf(phoneNumber.
                     substring(4, 7)));
             _extension = Integer.parseInt(String.valueOf(phoneNumber.
-                    substring(8,12)));
+                    substring(8, 12)));
         }
-
     }
 
     /**
@@ -68,11 +82,12 @@ public class PhoneNumber {
     private boolean isTollFree() {
         String isTollFreeTest = String.valueOf(this._area); // convert to string
         // for test if toll free
-        return isTollFreeTest.contains("800") || isTollFreeTest.contains("866") // return true if any are toll free
+        return isTollFreeTest.contains("800") || isTollFreeTest.contains("866")
                 || isTollFreeTest.contains("877") ||
                 isTollFreeTest.contains("880") || isTollFreeTest.contains("881")
                 || isTollFreeTest.contains("882") ||
                 isTollFreeTest.contains("888");
+        // return true if any are toll free
     }
 
     /**
@@ -92,11 +107,19 @@ public class PhoneNumber {
         return containsOnlyDigits;
     }
 
+    /**
+     * Method to convert string formatted phone number with letters to all
+     * numbers.
+     * @param phoneNumberToConvert phone number with letters
+     * @return
+     */
     private String LettersToNumbers(String phoneNumberToConvert) {
         char[] data = phoneNumberToConvert.toCharArray();
+        // loop through the phone number to decode from letters to numbers
         for (int i=0; i<data.length; ++i) {
             char phoneCharacter = data[i];
             phoneCharacter = Character.toLowerCase(phoneCharacter);
+            // store each index value as number once looped over.
             switch (phoneCharacter) {
                 case 'a':
                 case 'b':
@@ -134,7 +157,7 @@ public class PhoneNumber {
             }
         }
         return String.valueOf(data);
-    }
+    } // Method to convert letters to numbers and return value
 
     /**
      * method to 'pretty-print' the phone number as '(999) 999-9999'
@@ -148,11 +171,11 @@ public class PhoneNumber {
         PhoneNumber a = new PhoneNumber(609, 258, 4455);
         PhoneNumber b = new PhoneNumber(609, 876, 5309);
         PhoneNumber c = new PhoneNumber(609, 203, 5309);
-        PhoneNumber d = new PhoneNumber(215, 876, 5309);
+        PhoneNumber d = new PhoneNumber(215, 076, 5309);
         PhoneNumber e = new PhoneNumber(876, 5309);
         PhoneNumber f = new PhoneNumber("888-897-1234");
         PhoneNumber g = new PhoneNumber("255-get-loot");
-        PhoneNumber h = new PhoneNumber("255-SOn-Beam");
+        PhoneNumber h = new PhoneNumber("971-SOn-Beam");
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
@@ -163,7 +186,7 @@ public class PhoneNumber {
         System.out.println(f.isTollFree());
         System.out.println(g);
         System.out.println(h);
-        System.out.println(h.containsOnlyDigits("503-GET-COLD"));
+        //System.out.println(h.containsOnlyDigits("503-GET-COLD"));
     }
 
 }
