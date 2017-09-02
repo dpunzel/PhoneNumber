@@ -75,19 +75,34 @@ public class PhoneNumber {
         }
     } // getPhoneNumberStringValue method
 
+//    /**
+//     * Method to determine if phone number is Toll free based on any
+//     * of these combinations 800, 866, 877, 880, 881, 882, and 888
+//     * @return true if is toll free matches set of toll free numbers
+//     */
+//    private boolean isTollFree() {
+//        String isTollFreeTest = String.valueOf(this._area); // convert to string
+//        // for test if toll free
+//        return isTollFreeTest.contains("800") || isTollFreeTest.contains("866")
+//                || isTollFreeTest.contains("877") ||
+//                isTollFreeTest.contains("880") || isTollFreeTest.contains("881")
+//                || isTollFreeTest.contains("882") ||
+//                isTollFreeTest.contains("888");
+//        // return true if any are toll free
+//    } // isTollFree method
+
     /**
      * Method to determine if phone number is Toll free based on any
      * of these combinations 800, 866, 877, 880, 881, 882, and 888
      * @return true if is toll free matches set of toll free numbers
      */
     private boolean isTollFree() {
-        String isTollFreeTest = String.valueOf(this._area); // convert to string
+        int isTollFreeTest = this._area; // convert to string
         // for test if toll free
-        return isTollFreeTest.contains("800") || isTollFreeTest.contains("866")
-                || isTollFreeTest.contains("877") ||
-                isTollFreeTest.contains("880") || isTollFreeTest.contains("881")
-                || isTollFreeTest.contains("882") ||
-                isTollFreeTest.contains("888");
+        return isTollFreeTest == 800 || isTollFreeTest == 866
+                || isTollFreeTest == 877 || isTollFreeTest == 880
+                || isTollFreeTest == 881 || isTollFreeTest == 882 ||
+                isTollFreeTest == 888;
         // return true if any are toll free
     } // isTollFree method
 
@@ -166,5 +181,30 @@ public class PhoneNumber {
      */
     public String toString() {
         return String.format("(%03d) %03d-%04d", _area, _exchange, _extension);
+    }
+
+    public static void main(String[] args) {
+        PhoneNumber a = new PhoneNumber(609, 258, 4455);
+        PhoneNumber b = new PhoneNumber(609, 876, 5309);
+        PhoneNumber c = new PhoneNumber(609, 203, 5309);
+        PhoneNumber d = new PhoneNumber(215, 876, 5309);
+        PhoneNumber e = new PhoneNumber(876, 5309);
+        PhoneNumber f = new PhoneNumber("888-897-1234");
+        PhoneNumber g = new PhoneNumber("255-get-loot");
+        PhoneNumber h = new PhoneNumber("971-SOn-Beam");
+        PhoneNumber i = new PhoneNumber("888-SOn-Beam");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        System.out.println(d);
+        System.out.println(e);
+        System.out.println(e.isTollFree());
+        System.out.println(f);
+        System.out.println(f.isTollFree());
+        System.out.println(g);
+        System.out.println(h);
+        System.out.println(h.isTollFree());
+        System.out.println(i.isTollFree());
+        //System.out.println(h.containsOnlyDigits("503-GET-COLD"));
     }
 }
