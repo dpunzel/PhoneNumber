@@ -6,7 +6,7 @@
  * @version 1.0
  */
 public class PhoneNumber {
-    // variables used in Phone number
+    // variables used in Phone number class
     private int _area;
     private int _exchange;
     private int _extension;
