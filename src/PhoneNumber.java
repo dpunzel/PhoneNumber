@@ -11,7 +11,7 @@ public class PhoneNumber {
     private int _exchange;
     private int _extension;
     private static final int LOCAL_AREA_CODE = 503; // Constant known areaCode
-    private static final int[] tollFrees = {800, 866, 877, 880, 881, 882, 888};
+    private static final int[] TOLLFREES = {800, 866, 877, 880, 881, 882, 888};
 
     /**
      * Constructor with inputs of area code, exchange, and extension
@@ -85,7 +85,7 @@ public class PhoneNumber {
         boolean tollFreeCheck = false;
         int tollFreeValueToCheck = _area; // convert to string
 
-        for(int areaCode : tollFrees) {
+        for(int areaCode : TOLLFREES) {
             if(areaCode == tollFreeValueToCheck) {
                 tollFreeCheck = true;
             }
@@ -168,12 +168,5 @@ public class PhoneNumber {
      */
     public String toString() {
         return String.format("(%03d) %03d-%04d", _area, _exchange, _extension);
-    }
-    public static void main(String[] args) {
-        PhoneNumber a = new PhoneNumber("503-645-5030");
-        System.out.println(a.isTollFree());
-
-        PhoneNumber b = new PhoneNumber(880, 555, 9988);
-        System.out.println(b.isTollFree());
-    }
-}
+    } // toString overide
+} // PhoneNumber class end
